@@ -7,3 +7,5 @@ Deploying and destroying GCP infrastructure using the Terraform IVPAD sequence, 
 - Visual Studio Code
 - Windows Notepad
 - Windows Snipping tool
+
+![](https://cdn.hackersandslackers.com/2020/06/terraform-gcp.jpg)
