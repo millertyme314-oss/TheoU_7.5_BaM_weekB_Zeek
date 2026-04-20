@@ -3,6 +3,7 @@ Deploying and destroying GCP infrastructure using the Terraform IVPAD sequence, 
 
 ## Programs & Tools used:
 - GitBash
+- Google Cloud console
 - Terraform
 - Visual Studio Code
 - Windows Notepad
