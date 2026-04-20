@@ -8,4 +8,4 @@ Deploying and destroying GCP infrastructure using the Terraform IVPAD sequence, 
 - Windows Notepad
 - Windows Snipping tool
 
-![](https://cdn.hackersandslackers.com/2020/06/terraform-gcp.jpg)
+![](https://miro.medium.com/v2/resize:fit:1400/1*fKJ73NNhSGB9Nv-_Yl3GMA.jpeg)
