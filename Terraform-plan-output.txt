@@ -1,0 +1,198 @@
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:  
+  + create
+
+Terraform will perform the following actions:
+
+  # google_compute_disk.grafana_disk will be created
+  + resource "google_compute_disk" "grafana_disk" {
+      + access_mode                 = (known after apply)
+      + creation_timestamp          = (known after apply)
+      + disk_id                     = (known after apply)
+      + effective_labels            = (known after apply)
+      + enable_confidential_compute = (known after apply)
+      + id                          = (known after apply)
+      + label_fingerprint           = (known after apply)
+      + last_attach_timestamp       = (known after apply)
+      + last_detach_timestamp       = (known after apply)
+      + licenses                    = (known after apply)
+      + name                        = "grafana-disk"
+      + physical_block_size_bytes   = (known after apply)
+      + project                     = "class75-zeektha1st"
+      + provisioned_iops            = (known after apply)
+      + provisioned_throughput      = (known after apply)
+      + self_link                   = (known after apply)
+      + size                        = 10
+      + source_disk_id              = (known after apply)
+      + source_image_id             = (known after apply)
+      + source_snapshot_id          = (known after apply)
+      + terraform_labels            = (known after apply)
+      + type                        = "pd-standard"
+      + users                       = (known after apply)
+      + zone                        = "us-central1-a"
+
+      + guest_os_features (known after apply)
+    }
+
+  # google_compute_network.main will be created
+  + resource "google_compute_network" "main" {
+      + auto_create_subnetworks                   = false
+      + delete_default_routes_on_create           = false
+      + gateway_ipv4                              = (known after apply)
+      + id                                        = (known after apply)
+      + internal_ipv6_range                       = (known after apply)
+      + mtu                                       = 1460
+      + name                                      = "main"
+      + network_firewall_policy_enforcement_order = "AFTER_CLASSIC_FIREWALL"
+      + numeric_id                                = (known after apply)
+      + project                                   = "class75-zeektha1st"
+      + routing_mode                              = "REGIONAL"
+      + self_link                                 = (known after apply)
+    }
+
+  # google_compute_network.sidepiece will be created
+  + resource "google_compute_network" "sidepiece" {
+      + auto_create_subnetworks                   = false
+      + delete_default_routes_on_create           = false
+      + gateway_ipv4                              = (known after apply)
+      + id                                        = (known after apply)
+      + internal_ipv6_range                       = (known after apply)
+      + mtu                                       = 1460
+      + name                                      = "sidepiece"
+      + network_firewall_policy_enforcement_order = "AFTER_CLASSIC_FIREWALL"
+      + numeric_id                                = (known after apply)
+      + project                                   = "class75-zeektha1st"
+      + routing_mode                              = "REGIONAL"
+      + self_link                                 = (known after apply)
+    }
+
+  # google_compute_router.router will be created
+  + resource "google_compute_router" "router" {
+      + creation_timestamp = (known after apply)
+      + id                 = (known after apply)
+      + name               = "router"
+      + network            = (known after apply)
+      + project            = "class75-zeektha1st"
+      + region             = "us-central1"
+      + self_link          = (known after apply)
+
+      + bgp {
+          + advertise_mode     = "DEFAULT"
+          + asn                = 64514
+          + identifier_range   = (known after apply)
+          + keepalive_interval = 20
+        }
+    }
+
+  # google_compute_router.router-side will be created
+  + resource "google_compute_router" "router-side" {
+      + creation_timestamp = (known after apply)
+      + id                 = (known after apply)
+      + name               = "router-side"
+      + network            = (known after apply)
+      + project            = "class75-zeektha1st"
+      + region             = "us-central1"
+      + self_link          = (known after apply)
+
+      + bgp {
+          + advertise_mode     = "DEFAULT"
+          + asn                = 65501
+          + identifier_range   = (known after apply)
+          + keepalive_interval = 20
+        }
+    }
+
+  # google_compute_subnetwork.maria will be created
+  + resource "google_compute_subnetwork" "maria" {
+      + creation_timestamp         = (known after apply)
+      + external_ipv6_prefix       = (known after apply)
+      + fingerprint                = (known after apply)
+      + gateway_address            = (known after apply)
+      + id                         = (known after apply)
+      + internal_ipv6_prefix       = (known after apply)
+      + ip_cidr_range              = "10.1.0.0/18"
+      + ipv6_cidr_range            = (known after apply)
+      + name                       = "maria-subnet"
+      + network                    = (known after apply)
+      + private_ip_google_access   = true
+      + private_ipv6_google_access = (known after apply)
+      + project                    = "class75-zeektha1st"
+      + purpose                    = (known after apply)
+      + region                     = "us-central1"
+      + secondary_ip_range         = [
+          + {
+              + ip_cidr_range = "10.248.0.0/14"
+              + range_name    = "k8s-maria-range"
+            },
+          + {
+              + ip_cidr_range = "10.252.0.0/20"
+              + range_name    = "k8s-maria2-range"
+            },
+        ]
+      + self_link                  = (known after apply)
+      + stack_type                 = (known after apply)
+    }
+
+  # google_compute_subnetwork.private will be created
+  + resource "google_compute_subnetwork" "private" {
+      + creation_timestamp         = (known after apply)
+      + external_ipv6_prefix       = (known after apply)
+      + fingerprint                = (known after apply)
+      + gateway_address            = (known after apply)
+      + id                         = (known after apply)
+      + internal_ipv6_prefix       = (known after apply)
+      + ip_cidr_range              = "10.0.0.0/18"
+      + ipv6_cidr_range            = (known after apply)
+      + name                       = "private-subnet"
+      + network                    = (known after apply)
+      + private_ip_google_access   = true
+      + private_ipv6_google_access = (known after apply)
+      + project                    = "class75-zeektha1st"
+      + purpose                    = (known after apply)
+      + region                     = "us-central1"
+      + secondary_ip_range         = [
+          + {
+              + ip_cidr_range = "10.48.0.0/14"
+              + range_name    = "k8s-pod-range"
+            },
+          + {
+              + ip_cidr_range = "10.52.0.0/20"
+              + range_name    = "k8s-service-range"
+            },
+        ]
+      + self_link                  = (known after apply)
+      + stack_type                 = (known after apply)
+    }
+
+  # google_project_service.compute will be created
+  + resource "google_project_service" "compute" {
+      + disable_on_destroy = false
+      + id                 = (known after apply)
+      + project            = "class75-zeektha1st"
+      + service            = "compute.googleapis.com"
+    }
+
+  # google_project_service.compute2 will be created
+  + resource "google_project_service" "compute2" {
+      + disable_on_destroy = false
+      + id                 = (known after apply)
+      + project            = "class75-zeektha1st"
+      + service            = "compute.googleapis.com"
+    }
+
+  # google_project_service.container will be created
+  + resource "google_project_service" "container" {
+      + disable_on_destroy = false
+      + id                 = (known after apply)
+      + project            = "class75-zeektha1st"
+      + service            = "container.googleapis.com"
+    }
+
+  # google_project_service.container2 will be created
+  + resource "google_project_service" "container2" {
+      + disable_on_destroy = false
+      + id                 = (known after apply)
+      + project            = "class75-zeektha1st"
+      + service            = "container.googleapis.com"
+    }
+
+Plan: 11 to add, 0 to change, 0 to destroy.
